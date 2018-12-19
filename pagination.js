@@ -39,16 +39,16 @@ pageInaTion = function(htmlsl,htmlsr,objs,steps,numbers){
 	//往前翻
 	obj.fyLeft = function(){
 		fyHtml = '';
-		if((i-(steps*2))>0){
-			var temp = i%steps;
-			if(temp!=1){
-				i = i - temp -steps +1;
-				for(var y=i;i<y+steps;i++){
-					fyHtml += htmlsl+ i+ htmlsr;
-				}
-				$(objs).html("");
-				$(objs).html(fyHtml);
-			}else{
+		var temp = i%steps -1;
+		if(temp!=0){
+			i = i - temp -steps;
+			for(var y=i;i<y+steps;i++){
+				fyHtml += htmlsl+ i+ htmlsr;
+			}
+			$(objs).html("");
+			$(objs).html(fyHtml);
+		}else{
+			if((i-(steps*2))>0){
 				i = i-10;
 				for(var y=i;i<y+steps;i++){
 					fyHtml += htmlsl+ i+ htmlsr;
@@ -68,11 +68,11 @@ pageInaTion = function(htmlsl,htmlsr,objs,steps,numbers){
 			}
 			$(objs).html("");
 			$(objs).html(fyHtml);
-		}else if(i+steps>numbers&&i<numbers){
+		}else if(i+steps>numbers&&i-1<numbers){
 			for(;i<=numbers;i++){
 				fyHtml += htmlsl+ i+ htmlsr;
 			}
-			i--;
+			//i--;
 			$(objs).html("");
 			$(objs).html(fyHtml);
 		}
