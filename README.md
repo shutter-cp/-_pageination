@@ -5,9 +5,9 @@
 <!--分页-->
 <div class="myFY">  
   <div class="ui circular labels">
-    <a class="ui label" onclick="fyLeft();">&lt;&lt;</a>
+    <a class="ui label" onclick="pageLeft();">&lt;&lt;</a>
     <span id="fys"></span>
-    <a class="ui label" onclick="fyRight();">&gt;&gt;</a>
+    <a class="ui label" onclick="pageRight();">&gt;&gt;</a>
   </div>
 </div>
 ```
@@ -17,11 +17,11 @@
 //分页
 var pageIn = pageInaTion('<a class="ui label">','</a>','#fys',5,22);
 pageIn.inits();
-fyLeft = function(){
-pageIn.fyLeft();
+pageLeft = function(){
+pageIn.pageLeft();
 }
-fyRight = function(){
-pageIn.fyRight();
+pageRight = function(){
+pageIn.pageRight();
 }
 ```
 ## 依赖于
