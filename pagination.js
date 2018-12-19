@@ -7,8 +7,8 @@
  * 
  * 
  * inits 初始化
- * fyLeft 往前翻
- * fyRight 往后翻
+ * pageLeft 往前翻
+ * pageRight 往后翻
  */
 pageInaTion = function(htmlsl,htmlsr,objs,steps,numbers){
 	var obj = {};
@@ -22,59 +22,61 @@ pageInaTion = function(htmlsl,htmlsr,objs,steps,numbers){
 	
 	//初始化
 	obj.inits = function(){
-		var fyHtml = '';
+		var pageHtml = '';
 		if(numbers>=steps){
 			for(;i<=steps;i++){
-				fyHtml += htmlsl+ i+ htmlsr;
+				pageHtml += htmlsl+ i+ htmlsr;
 			}
 		}else{
 			for(;i<=numbers;i++){
-				fyHtml += htmlsl+ i+ htmlsr;
+				pageHtml += htmlsl+ i+ htmlsr;
 			}
 		}
 		$(objs).html("");
-		$(objs).html(fyHtml);
+		$(objs).html(pageHtml);
 	}
 	
 	//往前翻
-	obj.fyLeft = function(){
-		fyHtml = '';
+	obj.pageLeft = function(){
+		pageHtml = '';
 		var temp = i%steps -1;
 		if(temp!=0){
-			i = i - temp -steps;
-			for(var y=i;i<y+steps;i++){
-				fyHtml += htmlsl+ i+ htmlsr;
+			if(i>steps){
+				i = i - temp -steps;
+				for(var y=i;i<y+steps;i++){
+					pageHtml += htmlsl+ i+ htmlsr;
+				}
+				$(objs).html("");
+				$(objs).html(pageHtml);
 			}
-			$(objs).html("");
-			$(objs).html(fyHtml);
 		}else{
 			if((i-(steps*2))>0){
 				i = i-10;
 				for(var y=i;i<y+steps;i++){
-					fyHtml += htmlsl+ i+ htmlsr;
+					pageHtml += htmlsl+ i+ htmlsr;
 				}
 				$(objs).html("");
-				$(objs).html(fyHtml);
+				$(objs).html(pageHtml);
 			}
 		}
 	}
 	
 	//往后翻
-	obj.fyRight = function(){
-		fyHtml = '';
+	obj.pageRight = function(){
+		pageHtml = '';
 		if(i+steps<=numbers){
 			for(var y=i;i<y+steps;i++){
-				fyHtml += htmlsl+ i+ htmlsr;
+				pageHtml += htmlsl+ i+ htmlsr;
 			}
 			$(objs).html("");
-			$(objs).html(fyHtml);
+			$(objs).html(pageHtml);
 		}else if(i+steps>numbers&&i-1<numbers){
 			for(;i<=numbers;i++){
-				fyHtml += htmlsl+ i+ htmlsr;
+				pageHtml += htmlsl+ i+ htmlsr;
 			}
 			//i--;
 			$(objs).html("");
-			$(objs).html(fyHtml);
+			$(objs).html(pageHtml);
 		}
 	}
 	return obj;
